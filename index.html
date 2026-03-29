@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japa</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+<body>
+
+<div class="container">
+  <div class="mantra" id="mantra"></div>
+  <div id="count"></div>
+</div>
+
+<script>
+  let mantra = "ram";
+  let index = 0;
+  let count = localStorage.getItem('count') || 0;
+
+  const mantraEl = document.getElementById("mantra");
+  const countEl = document.getElementById("count");
+
+  function render() {
+    mantraEl.innerHTML = "";
+    countEl.innerHTML = count;
+    mantra.split("").forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.className = "letter" +
+        (i < index ? " filled" : "") +
+        (i === index ? " cursor" : "");
+      mantraEl.appendChild(span);
+    });
+  }
+
+  function reset(newMantra) {
+    mantra = newMantra || mantra;
+    index = 0;
+    count++;
+    localStorage.setItem('count', count);
+    render();
+  }
+
+  document.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
+
+    if (key === mantra[index]) {
+      index++;
+      if (index > mantra.length) index = 0;
+      if (index === mantra.length) {
+        setTimeout(() => reset(), 200);
+      }
+      render();
+    }
+  });
+
+  render();
+</script>
+
+</body>
+</html>

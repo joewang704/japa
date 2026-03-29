@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: #ffffff;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mantra {
+    font-size: 120px;
+    letter-spacing: 20px;
+    user-select: none;
+}
+
+.letter {
+    opacity: 0.2;
+    transition: opacity 0.2s ease;
+    position: relative;
+}
+
+.letter.filled {
+    opacity: 1;
+}
+
+.settings-btn {
+    position: absolute;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.6;
+    top: 16px;
+    right: 16px;
+}
+
+.settings-btn:hover {
+    opacity: 1;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #1c1c1c;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+}
+
+#count {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 24px;
+}
+
+input {
+    padding: 6px;
+    font-size: 14px;
+    margin-top: 5px;
+    width: 150px;
+}
+
+button {
+    margin-top: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
